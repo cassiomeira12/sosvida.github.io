@@ -6,9 +6,9 @@
   <meta name="description" content="Uma ferramenta para ajudar no combate à violência contra a mulher">
 
   <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="SOS Vida">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-status-bar-style" content="black">
+  <meta name="mobile-web-app-title" content="SOS Vida">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
@@ -93,7 +93,24 @@
       <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
       <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
   </picture>
- 
-  <script src="flutter_bootstrap.js" async=""></script>
+  
+  <script src="flutter_bootstrap.js" async>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('firebase-messaging-sw.js', {
+          scope: '/firebase-cloud-messaging-push-scope',
+        });
+      });
+    }
+  </script>
+
+  <!-- <script>
+    document.addEventListener("dart_loaded", function () {
+      console.log(`firebaseProjectId: ${window.firebaseProjectId}`);
+      console.log(`apiKey: ${window.apiKey}`);
+      console.log(`appId: ${window.appId}`);
+      console.log(`senderId: ${window.senderId}`);
+    });
+  </script> -->
 
 </body></html>
